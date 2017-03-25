@@ -10,7 +10,17 @@ use curl::easy::Easy;
 use tokio_core::reactor::Core;
 use tokio_curl::Session;
 
+#[macro_use]
+extern crate clap;
+use clap::App;
+
 fn main() {
+    let yml = load_yaml!("cli.yml");
+    let matches = App::from_yaml(yml).get_matches();
+    update_reek_config();
+}
+
+fn update_reek_config() {
     // Create an event loop that we'll run on, as well as an HTTP `Session`
     // which we'll be routing all requests through.
     let mut lp = Core::new().unwrap();

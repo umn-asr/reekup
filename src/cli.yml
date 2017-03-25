@@ -1,0 +1,4 @@
+name: reekup
+version: "0.2.0"
+about: Creates or updates a directory's Reek configuration file. 
+author: Ian Whitney <whit0694@umn.edu>
