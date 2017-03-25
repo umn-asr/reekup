@@ -42,7 +42,9 @@ fn update_reek_config() {
                 .open("config.reek")
                 .unwrap();
 
+            write!(&mut f, "### Reekup Begin\n").unwrap();
             f.write_all(data).unwrap();
+            write!(&mut f, "### Reekup End\n").unwrap();
             Ok(data.len())
         })
         .unwrap();
