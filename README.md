@@ -23,4 +23,16 @@ Otherwise, you can compile it yourself
 
 If no `config.reek` file exists, it will be created.
 
-If you run reekup more than once it'll just keep appending to your config.reek file. So...don't do that.
+If a `config.reek` file already exists, the contents of it will be preserved.
+
+You can run `reekup` multiple times in the same project, keeping your `config.reek` file up to date with ASR's standard.
+
+## Development
+
+- [Install Rust](https://www.rust-lang.org/en-US/)
+- Clone this repo
+- `cd reekup`
+- `./script/setup`
+- `./script/test`
+    - Note, tests are run with `RUST_TEST_THREADS=1` to remove parallelization.
+    - Running the `tests/reekup.rs` tests in parallel leads to random failure due to the tests all trying to write to & delete the same file.
