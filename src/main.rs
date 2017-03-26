@@ -5,10 +5,14 @@ extern crate tokio_curl;
 
 use std::io::Write;
 use std::fs::OpenOptions;
+use std::fs;
 
 use curl::easy::Easy;
 use tokio_core::reactor::Core;
 use tokio_curl::Session;
+
+use std::io::BufReader;
+use std::io::BufRead;
 
 #[macro_use]
 extern crate clap;
@@ -35,16 +39,55 @@ fn update_reek_config() {
     // This is called when the request is complete. It opens (or creates) config.reek and is set to
     // append at the bottom of the file.
     req.write_function(|data| {
-            let mut f = OpenOptions::new()
+            let temp = OpenOptions::new()
                 .write(true)
-                .append(true)
                 .create(true)
-                .open("config.reek")
-                .unwrap();
+                .open("reekup.tmp");
 
-            write!(&mut f, "### Reekup Begin\n").unwrap();
-            f.write_all(data).unwrap();
-            write!(&mut f, "### Reekup End\n").unwrap();
+            let mut temp = match temp {
+                Ok(c) => c,
+                Err(e) => panic!(e),
+            };
+
+            let current = OpenOptions::new()
+                .read(true)
+                .write(true)
+                .create(true)
+                .open("config.reek");
+
+            let current = match current {
+                Ok(c) => c,
+                Err(e) => panic!(e),
+            };
+
+            let current_buffer = BufReader::new(&current);
+
+            let mut copy_line = true;
+
+            for line in current_buffer.lines() {
+                let l = line.unwrap();
+
+                if l == "### Reekup Begin" {
+                    copy_line = false;
+                }
+
+                if copy_line {
+                    write!(&mut temp, "{}\n", l).unwrap();
+                }
+
+                if l == "### Reekup End" {
+                    copy_line = true;
+                }
+
+            }
+            write!(&mut temp, "### Reekup Begin\n").unwrap();
+            temp.write_all(data).unwrap();
+            write!(&mut temp, "### Reekup End\n").unwrap();
+
+            fs::copy("reekup.tmp", "config.reek").unwrap();
+
+            fs::remove_file("reekup.tmp").unwrap();
+
             Ok(data.len())
         })
         .unwrap();
