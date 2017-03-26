@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# script/bootstrap: Resolve all dependencies that the application requires to
+#                   run.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ -f ".overcommit.yml" ]; then
+echo "==> Installing Overcommit hooks…"
+overcommit
+overcommit --sign
+fi

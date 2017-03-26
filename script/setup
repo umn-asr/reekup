@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# script/setup: Resolve all dependencies that the application requires to
+#                   run.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/bootstrap
+cargo check

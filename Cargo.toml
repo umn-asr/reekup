@@ -5,7 +5,4 @@ authors = ["Ian Whitney <whit0694@umn.edu>"]
 
 [dependencies]
 curl = "0.4.6"
-futures = "0.1.11"
-tokio-core = "0.1.6"
-tokio-curl = "0.1"
 clap = {version = "2", features = ["yaml"]}
