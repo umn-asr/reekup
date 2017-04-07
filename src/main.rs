@@ -2,10 +2,11 @@ extern crate reekup;
 
 #[macro_use]
 extern crate clap;
-use clap::App;
+
+mod cli;
+use cli::cli;
 
 fn main() {
-    let yml = load_yaml!("cli.yml");
-    let matches = App::from_yaml(yml).get_matches();
+    let c = cli();
     reekup::run();
 }
