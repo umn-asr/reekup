@@ -10,8 +10,9 @@ use std::fs::File;
 use std::fs::OpenOptions;
 
 pub mod options;
+use self::options::Options;
 
-pub fn run() {
+pub fn run(options: &Options) {
     let reek_standards = get_reek_standards();
     match reek_standards {
         Ok(_) => update_config(),
