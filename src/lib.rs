@@ -15,13 +15,13 @@ use self::options::Options;
 pub fn run(options: &Options) {
     let reek_standards = get_reek_standards(&options.source_url);
     match reek_standards {
-        Ok(_) => update_config(),
+        Ok(_) => update_config(&options.target_filepath),
         Err(_) => println!("Unable to make http request"),
     }
     fs::remove_file(".standard.reek").unwrap();
 }
 
-fn update_config() {
+fn update_config(target_filepath: &String) {
     let temp = OpenOptions::new()
         .write(true)
         .create(true)
@@ -36,7 +36,7 @@ fn update_config() {
         .read(true)
         .write(true)
         .create(true)
-        .open("config.reek");
+        .open(target_filepath);
 
     let current = match current {
         Ok(c) => c,
@@ -86,7 +86,7 @@ fn update_config() {
 
     write!(&mut temp, "### Reekup End\n").unwrap();
 
-    fs::copy("reekup.tmp", "config.reek").unwrap();
+    fs::copy("reekup.tmp", target_filepath).unwrap();
 
     fs::remove_file("reekup.tmp").unwrap();
 }
