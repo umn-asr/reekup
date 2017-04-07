@@ -2,7 +2,7 @@
 name = "reekup"
 version = "0.2.0"
 dependencies = [
- "clap 2.22.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "clap 2.23.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "curl 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -28,7 +28,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "clap"
-version = "2.22.1"
+version = "2.23.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "ansi_term 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -185,7 +185,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum ansi_term 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)" = "23ac7c30002a5accbf7e8987d0632fa6de155b7c3d39d0067317a391e00a2ef6"
 "checksum atty 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "d912da0db7fa85514874458ca3651fe2cddace8d0b0505571dbdcd41ab490159"
 "checksum bitflags 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)" = "1370e9fc2a6ae53aea8b7a5110edbd08836ed87c88736dfabccade1c2b44bff4"
-"checksum clap 2.22.1 (registry+https://github.com/rust-lang/crates.io-index)" = "e17a4a72ffea176f77d6e2db609c6c919ef221f23862c9915e687fb54d833485"
+"checksum clap 2.23.1 (registry+https://github.com/rust-lang/crates.io-index)" = "d480c39a2e5f9b3a3798c661613e1b0e7a7ae71e005102d4aa910fc3289df484"
 "checksum curl 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)" = "c90e1240ef340dd4027ade439e5c7c2064dd9dc652682117bd50d1486a3add7b"
 "checksum curl-sys 0.3.10 (registry+https://github.com/rust-lang/crates.io-index)" = "c0d909dc402ae80b6f7b0118c039203436061b9d9a3ca5d2c2546d93e0a61aaa"
 "checksum gcc 0.3.45 (registry+https://github.com/rust-lang/crates.io-index)" = "40899336fb50db0c78710f53e87afc54d8c7266fb76262fecc78ca1a7f09deae"
