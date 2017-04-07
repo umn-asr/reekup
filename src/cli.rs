@@ -1,6 +1,6 @@
 use clap::App;
 
-use options::Options;
+use reekup::options::Options;
 
 pub fn cli() -> Options {
     let yml = load_yaml!("cli.yml");

@@ -4,7 +4,6 @@ extern crate reekup;
 extern crate clap;
 
 mod cli;
-mod options;
 use cli::cli;
 
 fn main() {

@@ -1,19 +1,15 @@
 extern crate curl;
-use std::io::Write;
-use std::fs::OpenOptions;
-use std::fs;
-use std::fs::File;
-
 use self::curl::easy::Easy;
 
-use std::io::BufReader;
+use std::io::Write;
 use std::io::BufRead;
+use std::io::BufReader;
 
-mod cli;
+use std::fs;
+use std::fs::File;
+use std::fs::OpenOptions;
+
 pub mod options;
-
-#[macro_use]
-extern crate clap;
 
 pub fn run() {
     let reek_standards = get_reek_standards();
