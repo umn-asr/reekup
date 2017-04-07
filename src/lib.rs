@@ -13,7 +13,7 @@ pub mod options;
 use self::options::Options;
 
 pub fn run(options: &Options) {
-    let reek_standards = get_reek_standards();
+    let reek_standards = get_reek_standards(&options.source_url);
     match reek_standards {
         Ok(_) => update_config(),
         Err(_) => println!("Unable to make http request"),
@@ -91,11 +91,11 @@ fn update_config() {
     fs::remove_file("reekup.tmp").unwrap();
 }
 
-fn get_reek_standards() -> Result<File, std::io::Error> {
+fn get_reek_standards(source_url: &String) -> Result<File, std::io::Error> {
     // Prepare the HTTP request to be sent.
     let mut req = Easy::new();
     req.get(true).unwrap();
-    req.url("https://raw.githubusercontent.com/umn-asr/dotfiles/master/reek").unwrap();
+    req.url(source_url).unwrap();
 
     // This is called when the request is complete. It opens (or creates) config.reek and is set to
     // append at the bottom of the file.
