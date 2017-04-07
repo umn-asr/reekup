@@ -9,6 +9,12 @@ use self::curl::easy::Easy;
 use std::io::BufReader;
 use std::io::BufRead;
 
+mod cli;
+pub mod options;
+
+#[macro_use]
+extern crate clap;
+
 pub fn run() {
     let reek_standards = get_reek_standards();
     match reek_standards {
