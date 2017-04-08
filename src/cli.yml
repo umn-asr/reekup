@@ -2,3 +2,18 @@ name: reekup
 version: "0.2.0"
 about: Creates or updates a directory's Reek configuration file. 
 author: Ian Whitney <whit0694@umn.edu>
+
+args:
+  - out:
+      short: o
+      long: out
+      value_name: FILE
+      help: Name of file to write your Reek config to.
+      takes_value: true
+      default_value: "config.reek"
+  - url:
+      short: u
+      long: url
+      value_name: URL
+      help: URL to get your standard Reek config file from
+      default_value: "https://raw.githubusercontent.com/umn-asr/dotfiles/master/reek"

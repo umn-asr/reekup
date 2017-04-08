@@ -1,6 +1,6 @@
 # Reekup
 
-Creates or updates a project's [Reek configuration file](https://github.com/troessner/reek) with the current [ASR standard](https://github.com/umn-asr/dotfiles/blob/master/reek).
+Creates or updates a project's [Reek configuration file](https://github.com/troessner/reek) with the current [ASR default](https://github.com/umn-asr/dotfiles/blob/master/reek).
 
 ## Installation
 
@@ -19,13 +19,20 @@ Otherwise, you can compile it yourself
 
 ## Usage
 
-`reekup` will append the latest Reek configuration to a `config.reek` file in the current directory.
+`reekup` will append [ASR's default Reek configuration](https://github.com/umn-asr/dotfiles/blob/master/reek) to a `config.reek` file in the current directory.
 
 If no `config.reek` file exists, it will be created.
 
 If a `config.reek` file already exists, the contents of it will be preserved.
 
-You can run `reekup` multiple times in the same project, keeping your `config.reek` file up to date with ASR's standard.
+You can run `reekup` multiple times in the same project, keeping your `config.reek` file up to date with ASR's default.
+
+`reekup -h` will show you the help.
+
+| Flag        | Use                                                                                                                           |
+| ----        | ----                                                                                                                          |
+| -o or --out | file where your reek config will be stored. Defaults to config.reek                                                           |
+| -u or --url | urr where your default reek config lives. Defaults to the [ASR default](https://github.com/umn-asr/dotfiles/blob/master/reek) |
 
 ## Development
 
@@ -34,5 +41,3 @@ You can run `reekup` multiple times in the same project, keeping your `config.re
 - `cd reekup`
 - `./script/setup`
 - `./script/test`
-    - Note, tests are run with `RUST_TEST_THREADS=1` to remove parallelization.
-    - Running the `tests/reekup.rs` tests in parallel leads to random failure due to the tests all trying to write to & delete the same file.
