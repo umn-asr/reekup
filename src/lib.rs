@@ -22,10 +22,13 @@ pub fn run(options: &Options) {
 }
 
 fn update_config(target_filepath: &String) {
+    let mut temp_filename = target_filepath.clone();
+    temp_filename.push_str(".tmp");
+
     let temp = OpenOptions::new()
         .write(true)
         .create(true)
-        .open("reekup.tmp");
+        .open(&temp_filename);
 
     let mut temp = match temp {
         Ok(c) => c,
@@ -86,9 +89,9 @@ fn update_config(target_filepath: &String) {
 
     write!(&mut temp, "### Reekup End\n").unwrap();
 
-    fs::copy("reekup.tmp", target_filepath).unwrap();
+    fs::copy(&temp_filename, target_filepath).unwrap();
 
-    fs::remove_file("reekup.tmp").unwrap();
+    fs::remove_file(&temp_filename).unwrap();
 }
 
 fn get_reek_standards(source_url: &String) -> Result<File, std::io::Error> {
