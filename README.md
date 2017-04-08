@@ -41,3 +41,5 @@ You can run `reekup` multiple times in the same project, keeping your `config.re
 - `cd reekup`
 - `./script/setup`
 - `./script/test`
+
+© 2017 Regents of the University of Minnesota. All rights reserved.
