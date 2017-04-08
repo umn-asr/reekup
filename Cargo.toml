@@ -1,6 +1,6 @@
 [package]
 name = "reekup"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Ian Whitney <whit0694@umn.edu>"]
 
 [dependencies]
