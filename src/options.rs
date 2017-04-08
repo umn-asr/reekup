@@ -1,5 +1,4 @@
 extern crate clap;
-// use self::clap::ArgMatches;
 
 #[derive(Debug)]
 pub struct Options {
