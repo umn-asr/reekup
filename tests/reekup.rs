@@ -139,6 +139,20 @@ fn standard_config_can_be_retrieved_from_a_url() {
     cleanup("asr_defaults.reek");
 }
 
+#[test]
+fn cli_can_use_a_provided_config_file_to_control_output_and_url() {
+    Command::new("./target/debug/reekup")
+        .args(&["--config", "tests/examples/.reekup.config.yml"])
+        .output()
+        .expect("failed to execute");
+
+    assert!(fs::metadata("myconfig.reek").is_ok());
+    let myconfig_reek = File::open("myconfig.reek").unwrap();
+    assert!(BufReader::new(&myconfig_reek).lines().any(|l| l.unwrap() == "  - reekup_test_config"));
+
+    cleanup("myconfig.reek");
+}
+
 fn cleanup(file_name: &str) {
     fs::remove_file(file_name).unwrap();
 }

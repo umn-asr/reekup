@@ -17,3 +17,8 @@ args:
       value_name: URL
       help: URL to get your standard Reek config file from
       default_value: "https://raw.githubusercontent.com/umn-asr/dotfiles/master/reek"
+  - config:
+      short: c
+      long: config
+      value_name: FILE
+      help: YAML file that contains your reekup config
