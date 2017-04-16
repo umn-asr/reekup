@@ -10,6 +10,8 @@ use std::fs::File;
 use std::fs::OpenOptions;
 
 pub mod options;
+pub mod config_file;
+
 use self::options::Options;
 
 pub fn run(options: &Options) {
