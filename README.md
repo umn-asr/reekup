@@ -42,4 +42,6 @@ You can run `reekup` multiple times in the same project, keeping your `config.re
 - `./script/setup`
 - `./script/test`
 
-© 2017 Regents of the University of Minnesota. All rights reserved.
+## License
+
+See [License.txt](licence.txt)
